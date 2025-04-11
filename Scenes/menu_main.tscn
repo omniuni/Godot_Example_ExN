@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3ox6mxkai1n1"]
+
+[ext_resource type="Script" uid="uid://df8abif88j71o" path="res://Scripts/menu_main.gd" id="1_savw8"]
+
+[sub_resource type="Theme" id="Theme_6etfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_savw8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aj48"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stxgw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_jbiok"]
+Button/font_sizes/font_size = 20
+Button/styles/disabled = SubResource("StyleBoxFlat_savw8")
+Button/styles/focus = SubResource("StyleBoxFlat_6aj48")
+Button/styles/hover = SubResource("StyleBoxFlat_stxgw")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6etfi")
+script = ExtResource("1_savw8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jbiok")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LabelName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "ExN"
+
+[node name="LabelDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "An example \"notes\" application demonstrating UI and state management."
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VBoxOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ButtonNotes" type="Button" parent="MarginContainer/VBoxContainer/VBoxOptions"]
+layout_mode = 2
+text = "Go to Notes"
+alignment = 0
+
+[node name="ButtonSettings" type="Button" parent="MarginContainer/VBoxContainer/VBoxOptions"]
+layout_mode = 2
+text = "Settings"
+alignment = 0
+
+[node name="ButtonExit" type="Button" parent="MarginContainer/VBoxContainer/VBoxOptions"]
+layout_mode = 2
+text = "Exit
+"
+alignment = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxOptions/ButtonNotes" to="." method="_on_button_notes_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxOptions/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxOptions/ButtonExit" to="." method="_on_button_exit_pressed"]
